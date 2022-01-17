@@ -1,33 +1,32 @@
-import React, {useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react';
 
-export default function Comp(){
-  const [count,setCount]=useState(0)
+export default function Comp() {
+  const [count, setCount] = useState(0);
 
   //v1
-  useEffect(()=>{
-    console.log("render")
-  })
+  useEffect(() => {
+    console.log('render');
+  });
   //v2
-  useEffect(()=>{
-    console.log("run only once after render")
-  },[])
+  useEffect(() => {
+    console.log('run only once after render');
+  }, []);
   //v3
-  useEffect(()=>{
-    console.log("run when dependency arrays changes")
-  },[count])
+  useEffect(() => {
+    console.log('run when dependency arrays changes');
+  }, [count]);
   //v4
-  useEffect(()=>{
-    return()=>{
-      console.log("unmount")
-    }
-  },[])
+  useEffect(() => {
+    return () => {
+      console.log('unmount');
+    };
+  }, []);
 
-  return(
+  return (
     <div>
-      <button onClick={()=>setCount(count-1)}>-</button>
+      <button onClick={() => setCount(count - 1)}>-</button>
       {count}
-      <button onClick={()=>setCount(count+1)}>+</button>
+      <button onClick={() => setCount(count + 1)}>+</button>
     </div>
-  )
-
+  );
 }
